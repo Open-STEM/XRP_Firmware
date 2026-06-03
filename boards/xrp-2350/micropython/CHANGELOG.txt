@@ -1,0 +1,7 @@
+# Version 2.2.21
+
+#### XRPLib  Beta What’s New
+#### Micropython v 2.27
+
+To update go to the 3 dot menu and select Firmware loader and follow the instructions.
+
