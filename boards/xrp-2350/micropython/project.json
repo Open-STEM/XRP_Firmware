@@ -40,6 +40,8 @@
         ["/lib/phew/dns.py", "phew/dns.py"],
         ["/lib/phew/logging.py", "phew/logging.py"],
         ["/lib/phew/server.py", "phew/server.py"],
-        ["/lib/phew/template.py", "phew/template.py"]
+        ["/lib/phew/template.py", "phew/template.py"],
+
+        ["/main.py", "main.py"]
     ]
 }
