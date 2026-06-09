@@ -1,0 +1,24 @@
+name: Create Release based on a tag
+
+on:
+  push:
+    tags:
+      - "v*" # Only trigger on tags starting with v
+
+permissions:
+  contents: write # To create releases and upload assets
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
