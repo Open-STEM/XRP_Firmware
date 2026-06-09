@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v*" # Only trigger on tags starting with v
+  workflow_dispatch:
 
 permissions:
   contents: write # To create releases and upload assets
