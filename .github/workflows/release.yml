@@ -6,10 +6,18 @@ on:
       - "v*.*.*"
 
 jobs:
-  build:
+  Release:
+    name: Release pushed tag
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+        
     steps:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Release
         uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
