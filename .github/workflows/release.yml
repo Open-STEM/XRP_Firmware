@@ -3,7 +3,7 @@ name: Release on Main
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "v*"
 
 jobs:
   Release:
