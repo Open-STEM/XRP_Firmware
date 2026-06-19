@@ -1,6 +1,5 @@
 {
     "title": "WPILib",
-    "description": "WPILib files for the XRP beta",
-    "uf2Path": "firmware.uf2",
-    "version": "2.2.1"
+    "description": "Flash the WPILib firmware for the XRP Beta. No additional library files are copied.",
+    "uf2": "firmware.uf2"
 }
