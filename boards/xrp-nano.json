@@ -1,0 +1,13 @@
+{
+    "title": "NanoXRP — choose a project",
+    "description": "Each project bundles firmware and library files to load onto your robot. Pick one to continue.",
+    "projects": [
+        {
+            "id": "micropython",
+            "name": "MicroPython",
+            "description": "MicroPython runtime and XRP libraries for the NanoXRP board.",
+            "image": "/firmware-loader/images/project-micropython.svg",
+            "nextLevel": "boards/xrp-nano/micropython/project.json"
+        }
+    ]
+}
