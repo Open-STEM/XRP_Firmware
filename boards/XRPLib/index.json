@@ -3,6 +3,12 @@
     "description": "Registry of XRPLib library versions shared across boards and projects. Projects reference a version by its friendly id (see the project.json `xrplib` field). Add a new entry here whenever a new XRPLib version directory is added; never reuse an id or dir for changed files.",
     "versions": [
         {
+            "id": "xrplib-2.3.0",
+            "name": "XRPLib 2.3.0",
+            "dir": "2.3.0",
+            "version": "2.3.0"
+        },
+        {
             "id": "xrplib-2.2.1",
             "name": "XRPLib 2.2.1",
             "dir": "2.2.1",
