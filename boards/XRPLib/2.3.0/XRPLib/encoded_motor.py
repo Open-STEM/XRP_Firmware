@@ -176,6 +176,9 @@ class EncodedMotor:
             return
         # Convert from rev per min to counts per 20ms (60 sec/min, 50 Hz)
         self.target_speed = speed_rpm*self._encoder.resolution/(60*50)
+        # Reset the persistent speed controller so a (re)start doesn't apply stale
+        # integral windup or a huge timestep left over from the last time it ran.
+        self.speedController.clear_history()
 
     def set_speed_controller(self, new_controller: Controller):
         """
