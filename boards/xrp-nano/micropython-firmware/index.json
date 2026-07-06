@@ -1,0 +1,13 @@
+{
+    "title": "MicroPython versions (NanoXRP / RP2040)",
+    "description": "Registry of MicroPython firmware versions available for this board. Projects reference a version by its friendly id (see the project.json `micropython` field). Each version directory contains the firmware UF2 named by `uf2`.",
+    "versions": [
+        {
+            "id": "micropython-1.28.0",
+            "name": "MicroPython 1.28.0 (NanoXRP)",
+            "dir": "1.28.0",
+            "version": "1.28.0",
+            "uf2": "CYTRON_NANOXRP_CONTROLLER-20260406-v1.28.0.uf2"
+        }
+    ]
+}
