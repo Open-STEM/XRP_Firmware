@@ -44,6 +44,10 @@
         "XRPLib/board.py"
     ],
     [
+        "/lib/XRPLib/buzzer.py",
+        "XRPLib/buzzer.py"
+    ],
+    [
         "/lib/XRPLib/controller.py",
         "XRPLib/controller.py"
     ],
