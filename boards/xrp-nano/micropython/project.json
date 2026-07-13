@@ -1,0 +1,9 @@
+{
+    "title": "MicroPython",
+    "description": "Flash MicroPython firmware and the XRPLib library (XRPLib, XRPExamples, ble and phew) to your robot.",
+    "micropython": "micropython-1.28.0",
+    "xrplib": "xrplib-2.2.3",
+    "files": [
+        ["/main.py", "main.py"]
+    ]
+}
