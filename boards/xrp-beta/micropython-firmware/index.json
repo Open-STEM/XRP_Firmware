@@ -7,7 +7,7 @@
             "name": "MicroPython 1.28.0",
             "dir": "1.28.0",
             "version": "1.28.0",
-            "uf2": "firmware.uf2"
+            "uf2": "SPARKFUN_XRP_CONTROLLER_BETA-20260406-v1.28.0.uf2"
         }
     ]
 }

@@ -2,8 +2,10 @@
     "title": "MicroPython",
     "description": "Flash MicroPython firmware and the XRPLib library (XRPLib, XRPExamples, ble and phew) to your robot.",
     "micropython": "micropython-1.28.0",
-    "xrplib": "xrplib-2.2.3",
+    "xrplib": "xrplib-2026.07.1",
     "files": [
-        ["/main.py", "main.py"]
+        ["/main.py", "main.py"],
+        ["/XRPExamples/buzzer_examples.py", "../../XRPLib/2026.07.1/XRPExamples/buzzer_examples.py"],
+        ["/lib/XRPLib/buzzer.py", "../../XRPLib/2026.07.1/XRPLib/buzzer.py"]
     ]
 }
