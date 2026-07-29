@@ -1,7 +1,7 @@
 # Version 2026.07.1 Release date 2026/07/29
 
 #### XRPLib  Beta What’s New
-#### Micropython v 2.28
+#### Micropython v 1.28
 
 Move to XRP Puppet protocol for Dashboard and Gamepad
 Other minor fixes
