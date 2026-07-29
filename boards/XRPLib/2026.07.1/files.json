@@ -4,10 +4,6 @@
         "XRPExamples/__init__.py"
     ],
     [
-        "/XRPExamples/buzzer_examples.py",
-        "XRPExamples/buzzer_examples.py"
-    ],
-    [
         "/XRPExamples/dashboard sample.py",
         "XRPExamples/dashboard sample.py"
     ],
@@ -46,10 +42,6 @@
     [
         "/lib/XRPLib/board.py",
         "XRPLib/board.py"
-    ],
-    [
-        "/lib/XRPLib/buzzer.py",
-        "XRPLib/buzzer.py"
     ],
     [
         "/lib/XRPLib/controller.py",
