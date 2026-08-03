@@ -1,4 +1,4 @@
-# Version 2026.07.1 Release date 2026/07/29
+# Version 2026.08.1 Release date 2026/08/03
 
 #### XRPLib  Beta What’s New
 #### Micropython v 1.28
