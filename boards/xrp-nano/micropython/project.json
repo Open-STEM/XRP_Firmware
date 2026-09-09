@@ -4,8 +4,10 @@
     "micropython": "micropython-1.28.0",
     "xrplib": "xrplib-2026.08.2",
     "files": [
-        ["/main.py", "main.py"],
-        ["/XRPExamples/buzzer_examples.py", "../../XRPLib/2026.08.2/XRPExamples/buzzer_examples.py"],
-        ["/lib/XRPLib/buzzer.py", "../../XRPLib/2026.08.2/XRPLib/buzzer.py"]
+        ["/main.py", "main.py"]
+    ],
+    "xrplibFiles": [
+        ["/XRPExamples/buzzer_examples.py", "XRPExamples/buzzer_examples.py"],
+        ["/lib/XRPLib/buzzer.py", "XRPLib/buzzer.py"]
     ]
 }
