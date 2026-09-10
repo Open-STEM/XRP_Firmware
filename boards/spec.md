@@ -100,6 +100,14 @@ A release **bundles** `XRPLib/`, `ble/`, `phew/`, and `XRPExamples/`. These are 
 copied to the robot when a project references the release (see the device-path
 convention below).
 
+A few files ship inside a release but are **not** installed on every board — the
+NanoXRP's `buzzer.py` and `buzzer_examples.py`, since it is the only board with a
+buzzer. Each release declares its own list in `board-only.json` (below); the
+generators read that and leave those files out of `files.json`, and a board that
+wants one asks for it by name via `xrplibFiles`. Never hand-edit `files.json` to
+achieve this — it is regenerated on every build and your edit will be silently
+reverted.
+
 ### `boards/<board>/micropython-firmware/index.json` — MicroPython firmware registry
 
 ```json
@@ -132,6 +140,9 @@ extras inline. It never has a separate `files.json`.
   "files": [                             // optional project-specific extras
     ["/lib/AgXRPLib/agxrp_controller.py", "AgXRPLib/agxrp_controller.py"],
     ["/main.py", "main.py"]
+  ],
+  "xrplibFiles": [                       // optional board-only files from the release above
+    ["/lib/XRPLib/buzzer.py", "XRPLib/buzzer.py"]
   ]
 }
 ```
@@ -149,12 +160,19 @@ Fields:
 - `files` (optional) — `[deviceDestination, sourcePathRelativeToProjectDir]`
   pairs for files that belong only to this project (e.g. a project-specific
   `main.py`, or a library like `AgXRPLib/` that is not part of an XRPLib release).
+- `xrplibFiles` (optional, requires `xrplib`) — `[deviceDestination,
+  sourcePathRelativeToReleaseDir]` pairs naming files from that release's
+  `board-only.json` that this board does want. Because the source is relative to the *resolved*
+  release directory, bumping `xrplib` carries these files along; never write a
+  `../../XRPLib/<version>/…` path in `files`, which silently pins the old
+  version when the release is bumped.
 
 Examples:
 
 | Project | `micropython` | `uf2` | `xrplib` | `files` |
 |---|---|---|---|---|
 | MicroPython | `micropython-1.28.0` | — | `xrplib-2.2.1` | `main.py` |
+| MicroPython (NanoXRP) | `micropython-1.28.0` | — | `xrplib-2.2.1` | `main.py` + `xrplibFiles`: buzzer |
 | AgXRP | `micropython-1.28.0` | — | `xrplib-2.1.3` | `AgXRPLib/…`, `main.py` |
 | SparkFun Red Vision | — | `firmware.uf2` | `xrplib-2.2.1` | — |
 | WPILib | — | `firmware.uf2` | — | — |
@@ -179,6 +197,24 @@ for hand-written `files` entries) maps the first path segment of a source file:
 Before copying, the wizard wipes the well-known library directories that appear in
 the combined manifest (`/lib/XRPLib`, `/lib/AgXRPLib`, `/lib/ble`, `/lib/phew`) so
 removed files don't linger.
+
+### `boards/XRPLib/<version>/board-only.json` — board-specific files in a release
+
+```json
+{
+  "description": "…",
+  "boardOnly": ["XRPLib/buzzer.py", "XRPExamples/buzzer_examples.py"]
+}
+```
+
+Paths are relative to the release directory. Files listed here are omitted from
+the generated `files.json`, so they are not installed on every robot; a board
+opts in through `xrplibFiles` in its `project.json`.
+
+The list is **owned by XRP_MicroPython** (`board-only.json` at that repo's root)
+and copied into each release by its publish workflow, so neither this repo nor
+XRPWeb hardcodes any filenames. A release without the file simply has no
+board-only files. It is never copied to the robot.
 
 ## `files.json` — generated for XRPLib releases only
 
@@ -206,8 +242,11 @@ npm run gen:firmware-manifests
 1. Create `boards/XRPLib/<version>/` with `XRPLib/`, `ble/`, `phew/`,
    `XRPExamples/` subfolders and drop the files in.
 2. Add an entry to `boards/XRPLib/index.json` with a version-tied `id`.
-3. Point projects at the new `id` via their `xrplib` field.
-4. Run `npm run gen:firmware-manifests`.
+3. Point **every** board's `micropython/project.json` at the new `id` via its
+   `xrplib` field — including `xrp-nano`, which is easy to miss.
+4. Run `npm run gen:firmware-manifests` and commit the regenerated `files.json`.
+   Boards needing board-only files (the NanoXRP's buzzer) pick them up
+   automatically through `xrplibFiles`; no per-version paths to update.
 
 ### Add a new MicroPython firmware for a board
 1. Create `boards/<board>/micropython-firmware/<version>/firmware.uf2`.
